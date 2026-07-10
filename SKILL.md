@@ -29,6 +29,8 @@ Offer to create one yourself, explain what you're about to do, and ask for confi
 | `Last Updated` | date | date of the last detected status change |
 | `Notes` | text | free-form summary of what happened / next steps |
 
+[CRITICAL ORDERING RULE]: You MUST define and inject these properties into the Notion API payload in the exact top-to-bottom sequence shown in the table above: 1. Company, 2. Role, 3. Application Status, 4. Last Updated, 5. Notes. Notion establishes the visual column order based strictly on the sequence of the creation object; do not scramble or alphabetize them.
+
 Use `notion-create-pages` (or whichever database-creation tool is available) to generate it, then share the link with the user and ask for confirmation that it looks right before starting to populate it.
 
 **If a database already exists but with different column names** (e.g. "Azienda" instead of "Company", "Stage" instead of "Application Status", or no Notes column at all):
@@ -87,9 +89,17 @@ Priority rules:
 - If the Notion schema doesn't have a status that accurately represents the situation, use the closest available status and **add the detail in Notes** instead of forcing a new status option into the schema, unless the user explicitly asks to expand the options.
 
 ### 6. Write to Notion
-- **New application** → `notion-create-pages` with the `data_source_id` as parent, filling in the real properties of the database (company, role, status, notes, last-updated date = today).
-- **Existing application with a changed status** → `notion-update-page` (`command: update_properties`) on the matching page, updating status, notes, and date.
+- **New application** → `notion-create-pages` with the `data_source_id` as parent. You MUST populate the page properties strictly respecting the established column order in the schema array/object:
+  1. `Company`
+  2. `Role`
+  3. `Application Status`
+  4. `Last Updated`
+  5. `Notes`
+     
+  Never omit a property from the creation payload if it belongs to the standard schema, even if empty, to preserve the structural visual order.- **Existing application with a changed status** → `notion-update-page` (`command: update_properties`) on the matching page, updating status, notes, and date.
 - Don't touch existing applications if there's no new signal from email/calendar.
+
+
 
 ### 7. Final report
 Present the user with a text summary (a markdown table is fine) including:
