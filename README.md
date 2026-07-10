@@ -13,7 +13,7 @@ The skill allows you to completely automate updating a **Notion** database with 
 1. Download this repo as a ZIP
 2. Go to **claude.ai → Sidebar → Customize → Skills → Upload a Skill**
 3. Upload or import the file `SKILL.md` into your Claude interface (or include its contents inside your *Project Instructions* / *Custom Instructions* if you prefer manual synchronization).
-4. Activate the skill in your chat session by typing `/job_application_tracker`
+4. Activate the skill in your chat session by typing `/job-application-tracker`
 5. Let the SKILL do the work.
 
 ### Option 2: Continuous Automation with Claude Cowork
