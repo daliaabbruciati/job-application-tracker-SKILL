@@ -1,4 +1,4 @@
-# Job Application Tracker (Claude Skill)
+# 📃 Job Application Tracker (Claude Skill)
 
 This repository contains the configuration files and operational instructions to enable the **Job Application Tracker** skill on your Claude assistant.
 
@@ -10,7 +10,7 @@ The skill allows you to completely automate updating a **Notion** database with 
 
 ### Option 1: Direct Use in Claude Chat (Manual)
 
-1. Download this repo as a ZIP
+1. Download this repo as a ZIP, or just download the `SKILL.md` file
 2. Go to **claude.ai → Sidebar → Customize → Skills → Upload a Skill**
 3. Upload or import the file `SKILL.md` into your Claude interface (or include its contents inside your *Project Instructions* / *Custom Instructions* if you prefer manual synchronization).
 4. Activate the skill in your chat session by typing `/job-application-tracker`
