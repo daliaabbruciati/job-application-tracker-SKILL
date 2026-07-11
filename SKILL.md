@@ -99,12 +99,22 @@ Priority rules:
   Never omit a property from the creation payload if it belongs to the standard schema, even if empty, to preserve the structural visual order.- **Existing application with a changed status** → `notion-update-page` (`command: update_properties`) on the matching page, updating status, notes, and date.
 - Don't touch existing applications if there's no new signal from email/calendar.
 
+### 6.5 Duplicate detection and removal
+Before producing the final report, check the full set of rows read in Step 1 (plus anything just created/updated in Step 6) for duplicates: two or more rows referring to the same company (same cleaned name per the matching rules in Step 4).
 
+- For each group of duplicate rows for the same company, keep **only the row with the most recent "Last Updated" date** and treat all the others as duplicates to remove.
+  - If two duplicate rows are tied on "Last Updated" (same date), use the underlying page's actual last-edited timestamp (visible in `notion-search` results, or by comparing which row was just written in this run) as a tiebreaker, and keep the more recently edited one.
+- **Removal mechanism**: this integration has no tool to permanently delete a Notion page. To "remove" a duplicate:
+  1. Rename its title to prefix it clearly, e.g. `[DUPLICATO - da eliminare] <Company>` (adapt the language to the user's), so it's unambiguous and easy to find later.
+  2. Use `notion-move-pages` to move it out of the database, to `{"type": "workspace"}` (private page at workspace level). This removes it from the tracked database/view without touching the row you're keeping.
+- Never guess which row to keep based on content length or how detailed the notes look — always use the "Last Updated" date (with the edit-timestamp tiebreaker above) as the deciding factor.
+- Do this automatically, without asking for confirmation first, since the action is reversible (the page still exists, just moved and relabeled, not deleted) and the criteria are deterministic. Still, always tell the user clearly in the final report which duplicates were found and that they were removed/moved (see Step 7), and mention that true permanent deletion isn't available via this integration — the person can delete the relabeled pages themselves from Notion's trash/sidebar if they want them gone for good.
 
 ### 7. Final report
 Present the user with a text summary (a markdown table is fine) including:
 - Applications added (company, role, status, brief reason)
 - Applications updated (previous status → new, reason)
+- Duplicates found and removed/moved (company, which row was kept vs. removed and why, i.e. the "Last Updated" dates compared), explicitly telling the user the duplicate records were removed/moved out of the database
 - Any emails excluded as irrelevant (brief mention, no need to list them all)
 - Any issues encountered (e.g. Notion tools unavailable on the current plan, missing connector, database created from scratch)
 
@@ -117,3 +127,4 @@ Present the user with a text summary (a markdown table is fine) including:
 - This skill doesn't run on its own: in a normal chat it needs to be triggered manually ("sync my job applications"). To run it automatically every N hours, you need **Claude Cowork** with a scheduled task (`/schedule`), pasting these instructions in.
 - `notion-query-database-view` and `notion-query-data-sources` require a Notion Business+ plan with Notion AI: if the workspace doesn't support it, matching against existing rows has to be done via `notion-search` or by browsing, with a higher margin of error.
 - Generic alert emails (job alerts, newsletters from learning platforms) should never be treated as job applications.
+- There's no tool available to permanently delete a Notion page. Duplicate rows (see Step 6.5) are relabeled and moved out of the database rather than deleted outright; the user can permanently delete them from Notion's own trash/sidebar if they want.
