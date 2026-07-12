@@ -36,3 +36,9 @@ The skill relies on the MCP (Model Context Protocol) framework. It requires acce
 * **Notion Account:** If you haven't a Notion account where to store the data, the skill will create a PDF file to download with the data formatted in a table.
 * **Notion Plans:** Certain advanced SQL query tools require a Notion Business plan. If a `validation_error` occurs, Claude will seamlessly switch to a standard indexed keyword search (`notion-search`).
 * **Email Languages:** The skill is configured to scan for both English and Italian application terminology. If you receive communications in another language, just let Claude know during activation so it can expand its keyword criteria.
+
+
+## ☕️ Support me
+<a href="https://buymeacoffee.com/daliaabbr" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40">
+</a>
