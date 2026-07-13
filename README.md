@@ -9,15 +9,12 @@ The skill allows you to completely automate updating a **Notion** database with 
 
 ---
 
-## 🚀 How to Download and Activate the Skill
+## 🚀 Installation
 
-### Option 1: Direct Use in Claude Chat (Manual)
+### Option 1 (RECOMMENDED) - Claude.ai (browser)
 
-1. Download this repo as a ZIP, or just download the `SKILL.md` file
+1. Download this repo as a ZIP
 2. Go to **claude.ai → Sidebar → Customize → Skills → Upload a Skill**
-3. Upload or import the file `SKILL.md` into your Claude interface (or include its contents inside your *Project Instructions* / *Custom Instructions* if you prefer manual synchronization).
-4. Activate the skill in your chat session by typing `/job-application-tracker`
-5. Let the SKILL do the work.
 
 ### Option 2: Continuous Automation with Claude Cowork
 If you want the background monitoring to run continuously without manual intervention:
@@ -32,6 +29,42 @@ The skill relies on the MCP (Model Context Protocol) framework. It requires acce
 * 🛠️ **Notion Connector** (Required to store the data)
 * 📧 **Gmail Connector** (To scan for replies and application receipts)
 * 📅 **Google Calendar Connector** (To detect scheduled interviews and tests)
+
+---
+
+## ✅ The Problem This Solves
+
+Keeping track of job hunt progress can quickly become a second full-time job. 
+
+* **The Inbox Black Hole:** Important updates, automated application receipts, and interview invites get buried under dozens of daily emails.
+* **Manual Data Entry Fatigue:** Manually copying company names, roles, application dates, and status updates into a spreadsheet or database is tedious and easy to forget.
+* **Disjointed Timelines:** Remembering exactly when an interview was scheduled or when a follow-up is due requires constantly jumping between your calendar, email, and tracking tool.
+
+This skill eliminates the friction by turning your AI assistant into an automated recruiter coordinator that keeps your tracking database perfectly synchronized in the background.
+
+---
+
+## 🎯 Usage
+
+In Claude, you can invoke the skill by simply using the shortcut command:
+```
+/job-application-tracker
+```
+---
+
+## ⚙️ How It Works
+
+Once triggered, the skill orchestrates a multi-step workflow across your connected apps using the Model Context Protocol (MCP):
+
+1. **Email Scan:** It securely scans your Gmail inbox for specific keywords (e.g., *"thank you for applying"*, *"interview invitation"*, *"proposta"*, *"colloquio"*) from the last few days to detect new applications or status updates.
+> [!NOTE]
+> **Bilingual Search Capabilities:** The email scanning phase is pre-configured to detect keywords in both **English and Italian** (e.g., *"thank you for applying"*, *"interview invitation"*, *"grazie per la tua candidatura"*, *"colloquio"*). If you primarily receive communications in a different language, simply inform the assistant during activation to adapt its search criteria.
+2. **Calendar Cross-Reference:** It checks your Google Calendar for upcoming or recent events tagged as interviews, technical tests, or HR screenings.
+3. **Data Extraction & Structuring:** The AI extracts key data points such as Company Name, Job Title, Salary Range (if mentioned), Application Date, Current Stage, and Next Steps.
+4. **Notion Synchronization:** 
+   * It queries your existing Notion database to see if the company or role already exists.
+   * If it's a new application, it creates a new entry.
+   * If it's an update (e.g., an interview invite for an existing application), it automatically updates the status and logs the interview date.
 
 ---
 
