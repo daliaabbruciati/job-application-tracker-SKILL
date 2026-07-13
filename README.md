@@ -6,9 +6,6 @@ This repository contains the configuration files and operational instructions to
 
 The skill allows you to completely automate updating a **Notion** database with your job applications by cross-referencing recent **Gmail** messages and **Google Calendar** events.
 
-> [!NOTE]
-> **Multi-LLM Compatibility:** While designed with Claude's syntax in mind, the prompt logic and operational instructions in `SKILL.md` can be easily adapted for use with other advanced AI assistants like **Google Gemini** or **ChatGPT**, provided they have access to equivalent workspace extensions or tools.
-
 ---
 
 ## 🚀 Installation
@@ -76,7 +73,7 @@ Once triggered, the skill orchestrates a multi-step workflow across your connect
 * **Email Languages:** The skill is configured to scan for both English and Italian application terminology. If you receive communications in another language, just let Claude know during activation so it can expand its keyword criteria.
 
 
-## ☕️ Support me
+## ☕️ Thank U
 <a href="https://buymeacoffee.com/daliaabbr" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40">
 </a>
