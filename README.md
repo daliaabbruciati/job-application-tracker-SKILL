@@ -4,6 +4,9 @@ This repository contains the configuration files and operational instructions to
 
 The skill allows you to completely automate updating a **Notion** database with your job applications by cross-referencing recent **Gmail** messages and **Google Calendar** events.
 
+> [!NOTE]
+> **Multi-LLM Compatibility:** While designed with Claude's syntax in mind, the prompt logic and operational instructions in `SKILL.md` can be easily adapted for use with other advanced AI assistants like **Google Gemini** or **ChatGPT**, provided they have access to equivalent workspace extensions or tools.
+
 ---
 
 ## 🚀 How to Download and Activate the Skill
@@ -33,7 +36,7 @@ The skill relies on the MCP (Model Context Protocol) framework. It requires acce
 ---
 
 ## 🛠️ Troubleshooting & Limitations
-* **Notion Account:** If you haven't a Notion account where to store the data, the skill will create a PDF file to download with the data formatted in a table.
+* **Notion Account:** If you don't have a Notion account to store the data, the skill will create a downloadable PDF file with the data formatted in a table.
 * **Notion Plans:** Certain advanced SQL query tools require a Notion Business plan. If a `validation_error` occurs, Claude will seamlessly switch to a standard indexed keyword search (`notion-search`).
 * **Email Languages:** The skill is configured to scan for both English and Italian application terminology. If you receive communications in another language, just let Claude know during activation so it can expand its keyword criteria.
 
