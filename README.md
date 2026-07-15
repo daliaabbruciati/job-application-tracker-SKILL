@@ -74,4 +74,4 @@ Once triggered, the skill orchestrates a multi-step workflow across your connect
 
 
 ## ☕️ Thank U
-<a href="https://buymeacoffee.com/daliaabbr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40"></a> [![PayPal](https://img.shields.io/badge/Donate-PayPal-003087?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/daliaabbruciati)
+<a href="https://buymeacoffee.com/daliaabbr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="29"></a> [![PayPal](https://img.shields.io/badge/Donate-PayPal-003087?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/daliaabbruciati)
